@@ -28,7 +28,7 @@ if (process.env.TRAVIS) {
   config.port = 4723;
 
   // Mobile devices
-  if (process.env.MOBILE_BROWSER) {
+  if (process.env.SAUCE_PLATFORM_NAME === 'iOS') {
     config.multiCapabilities = [{
       'deviceName': 'iPhone XS Simulator',
       'platformName': 'iOS',
@@ -39,11 +39,20 @@ if (process.env.TRAVIS) {
       'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
       'build': process.env.TRAVIS_BUILD_NUMBER
     }, {
-      'deviceName': 'Samsung Galaxy Tab A 10 GoogleAPI Emulator',
-      'platformName': 'Android',
-      'platformVersion': '8.1',
+      'deviceName': 'iPhone X Simulator',
+      'platformName': 'iOS',
+      'platformVersion': '11.3',
       'deviceOrientation': 'portrait',
-      'browserName': 'Chrome',
+      'browserName': 'Safari',
+      'appiumVersion': '1.9.1',
+      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+      'build': process.env.TRAVIS_BUILD_NUMBER
+    }, {
+      'deviceName': 'iPhone SE Simulator',
+      'platformName': 'iOS',
+      'platformVersion': '10.3',
+      'deviceOrientation': 'portrait',
+      'browserName': 'Safari',
       'appiumVersion': '1.9.1',
       'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
       'build': process.env.TRAVIS_BUILD_NUMBER
